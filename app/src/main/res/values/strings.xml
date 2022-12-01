@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Dynamic Developers</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Menu selections -->
+    <string name="title_results">Results</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_about">About</string>
+
+    <!-- Main Activity -->
+    <string name="title_game">Welcome to our game!</string>
+    <string name="questions">Are you ready to test you android studio knowledge?</string>
+    <string name="questions_remaining">Questions Remaining</string>
+
+    <!-- About Activity -->
+    <string name="button_gurjot">Gurjot</string>
+    <string name="button_harshit">Harshit</string>
+    <string name="button_manpreet">Manpreet</string>
+    <string name="button_viva">Viva</string>
+    <string name="title_dynamic_developers">Dynamic Developers Team</string>
+    <string name="title_learn_more">Choose a Developer to learn more!</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+</resources>
