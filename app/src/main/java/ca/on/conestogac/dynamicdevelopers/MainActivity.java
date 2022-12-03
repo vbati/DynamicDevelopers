@@ -112,7 +112,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
+        Button selectedButton = (Button) view;
+        usersAnswer = selectedButton.getText().toString();
 
+        var getCorrectAnswer = QuizletActivity.answers[currentQuestionIndex];
+        if(getCorrectAnswer == usersAnswer){
+            Toast.makeText(this, "You are correct", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(this, "You are very wrong", Toast.LENGTH_SHORT).show();
+        }
+
+        currentQuestionIndex++;
+        displayQuestion();
     }
 
     //
