@@ -12,14 +12,34 @@ package ca.on.conestogac.dynamicdevelopers;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    TextView questionsRemaining;
+    TextView questionView;
+    Button answerA;
+    Button answerB;
+    Button answerC;
+    Button answerD;
+
+    // declare variables
+    int score = 0;
+    int totalQuizletQuestions = QuizletActivity.questions.length;
+    int currentQuestionIndex = 0;
+    String usersAnswer = "";
+    int remainingQuestions = 0;
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -27,10 +47,22 @@ public class MainActivity extends AppCompatActivity {
         setTheme(R.style.Theme_DynamicDevelopers);
 
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
 
+        questionsRemaining = findViewById(R.id.questionsRemaining);
+        questionView =findViewById(R.id.questionView);
+        answerA = findViewById(R.id.answerA);
+        answerB = findViewById(R.id.answerB);
+        answerC = findViewById(R.id.answerC);
+        answerD = findViewById(R.id.answerD);
 
+        // set onClickListener to all answer buttons
+        answerA.setOnClickListener(this);
+        answerB.setOnClickListener(this);
+        answerC.setOnClickListener(this);
+        answerD.setOnClickListener(this);
+
+        displayQuestion();
     }
 
 
@@ -76,5 +108,20 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         return return_selection;
+    }
+
+    @Override
+    public void onClick(View view) {
+
+    }
+
+    //
+    void displayQuestion(){
+        questionView.setText(QuizletActivity.questions[currentQuestionIndex]);
+        answerA.setText(QuizletActivity.options[currentQuestionIndex][0]);
+        answerB.setText(QuizletActivity.options[currentQuestionIndex][1]);
+        answerC.setText(QuizletActivity.options[currentQuestionIndex][2]);
+        answerD.setText(QuizletActivity.options[currentQuestionIndex][3]);
+
     }
 }
