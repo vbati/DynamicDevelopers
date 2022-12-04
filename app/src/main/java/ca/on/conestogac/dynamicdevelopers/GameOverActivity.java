@@ -19,7 +19,7 @@ public class GameOverActivity extends AppCompatActivity {
     private static final DecimalFormat df = new DecimalFormat("0.00");
     private SharedPreferences sharedPref;
     private ImageView imageViewGameResult;
-
+    private Button buttonReset;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -29,7 +29,6 @@ public class GameOverActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         // assign variables in the OnCreate
-        //buttonReset = findViewById(R.id.button_reset);
         //textViewGameResult =findViewById(R.id.game_over_results);
         setContentView(R.layout.activity_game_over);
         PreferenceManager.setDefaultValues(this, R.xml.root_preferences, false);
@@ -56,11 +55,12 @@ public class GameOverActivity extends AppCompatActivity {
             imageViewGameResult.setImageResource(R.drawable.ic_launcher_losing_cup);
         }
 
+        buttonReset = findViewById(R.id.button_reset);
+
         // listener for event when reset button is clicked by player
-        //buttonReset.setOnClickListener(view -> {
-         //   finish();
-          //  startActivity(new Intent(getApplicationContext(), MainActivity.class));
-        //});
+        buttonReset.setOnClickListener(view -> {
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        });
 
     }
 }
