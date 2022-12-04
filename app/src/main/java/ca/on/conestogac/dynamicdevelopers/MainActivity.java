@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // pop the first element in randomized array from above and set to current index
         currentQuestionIndex = (int) randomArray.get(0);
         randomArray.remove(0);
+        remainingQuestions = totalQuizletQuestions;
 
         // set onClickListener to all answer buttons
         answerA.setOnClickListener(this);
@@ -140,14 +141,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         Button selectedButton = (Button) view;
         usersAnswer = selectedButton.getText().toString();
-
         var getCorrectAnswer = QuizletActivity.answers[currentQuestionIndex];
         if(getCorrectAnswer == usersAnswer){
             score++;
-            Toast.makeText(this, "You are correct", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
         }
         else{
-            Toast.makeText(this, "You are very wrong", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "WRONG", Toast.LENGTH_SHORT).show();
         }
 
         if(randomArray.size() == 0)
@@ -165,6 +165,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String getStringFromTextView = questionsRemaining.getText().toString();
         if(getStringFromTextView.contains("Welcome"))
         {
+            remainingQuestions = remainingQuestions-1;
+            Toast.makeText(this, String.valueOf(remainingQuestions), Toast.LENGTH_SHORT).show();
+
             String fetchPlayerName = sharedPref.getString("player_name", "");
             questionsRemaining.setText(fetchPlayerName + " you have " + String.valueOf(remainingQuestions) + " questions remaining");
         }
