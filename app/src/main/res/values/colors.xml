@@ -14,4 +14,8 @@
     <color name="blue">#2196F3</color>
     <color name="yellow">#FFEB3B</color>
 
+    <!-- Main Application Colours-->
+    <color name="mainAppColor">#F1A432</color>
+    <color name="questionButtonsBlue">#FF9800</color>
+
 </resources>
