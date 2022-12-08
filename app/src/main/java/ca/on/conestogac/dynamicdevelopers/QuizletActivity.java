@@ -1,4 +1,4 @@
-// Quiz Activity used to hold questions, question options and correct answers
+// Quizlet Activity used to hold questions, question options and correct answers
 // Sources Used to develop questions:https://conestoga.desire2learn.com/d2l/home/628810
 
 package ca.on.conestogac.dynamicdevelopers;

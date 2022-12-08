@@ -38,6 +38,9 @@
     <string name="title_dynamic_developers">Dynamic Developers Team</string>
     <string name="title_learn_more">Choose a Developer to learn more!</string>
 
+    <!-- Notification Services -->
+    <string name="notification_title">Hey Quizleter</string>
+    <string name="notification_message">Continue playing! You\'re almost there</string>
 
     <!-- Sync Preferences -->
     <string name="title_theme">Sync email periodically</string>

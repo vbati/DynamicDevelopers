@@ -2,7 +2,7 @@
 // Group 4: Dynamic Developers - Quizlet
 // Programming: Mobile Applications II
 // Created: 11/28/2022
-// Last modified: 12/03/2022 VB
+// Last modified: 12/07/2022 VB
 // Resources used:
 // https://developer.android.com/
 // https://conestoga.desire2learn.com/
@@ -206,5 +206,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // retrieve game theme settings selections
         // toggleSave = sharedPref.getBoolean("toggle_save", false);
         boolean toggleTheme = sharedPref.getBoolean("toggle_dark_theme", false);
+    }
+
+    @Override
+    // listener for when activity is being deactivated
+    protected void onStop() {
+        startService(new Intent(getApplicationContext(), NotificationService.class));
+        super.onStop();
     }
 }

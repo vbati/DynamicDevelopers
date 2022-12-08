@@ -1,3 +1,5 @@
+// GameOverActivity screen used to display players Quizlet result
+
 package ca.on.conestogac.dynamicdevelopers;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,14 +37,14 @@ public class GameOverActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game_over);
         buttonReset = findViewById(R.id.button_reset);
 
-        textViewGameResult =findViewById(R.id.game_over_results);
+        textViewGameResult = findViewById(R.id.game_over_results);
         PreferenceManager.setDefaultValues(this, R.xml.root_preferences, false);
         // Read and modify saved inputs
         sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 
         boolean fetchThemeToggle = sharedPref.getBoolean("toggle_dark_theme", false);
 
-        if (fetchThemeToggle != true) {
+        if (!fetchThemeToggle) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
@@ -68,8 +70,6 @@ public class GameOverActivity extends AppCompatActivity {
         }
 
         // listener for event when reset button is clicked by player
-        buttonReset.setOnClickListener(view -> {
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-        });
+        buttonReset.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), MainActivity.class)));
     }
 }

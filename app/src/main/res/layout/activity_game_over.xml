@@ -50,7 +50,7 @@
             <ImageView
                 android:id="@+id/show_game_result"
                 android:layout_width="match_parent"
-                android:layout_height="520dp"
+                android:layout_height="494dp"
                 android:focusable="auto"
                 app:srcCompat="@drawable/ic_launcher_losing_cup" />
 
