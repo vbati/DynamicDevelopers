@@ -19,6 +19,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,13 +27,16 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     // declared variables
     private SharedPreferences sharedPref;
+    private DBHandler dbHandler;
     TextView questionsRemaining;
     TextView questionView;
     Button answerA;
@@ -42,9 +46,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String usersAnswer = "";
     int score = 0;
     int remainingQuestions = 0;
-    int currentQuestionIndex = 0;
-    int totalQuizletQuestions = QuizletActivity.questions.length;
-    ArrayList<Integer> randomArray = new ArrayList<Integer>();
+    int totalQuizletQuestions = 0;
+    ArrayList<QuestionModel> questionsList = new ArrayList<>();
+    QuestionModel currentQuestion;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -54,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        dbHandler = new DBHandler(MainActivity.this);
         // Find all needed ids on main activity
         questionsRemaining = findViewById(R.id.questionsRemaining);
         questionView =findViewById(R.id.questionView);
@@ -64,17 +68,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         answerD = findViewById(R.id.answerD);
 
         // random questions so they are not always in same order
-        for(int i = 0; i < totalQuizletQuestions; i++)
-        {
-            randomArray.add(i);
-            Collections.shuffle(randomArray);
+        try {
+            dbHandler.addFileOfChoosingToDb(this);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
         // When game first starts Player Name is empty and prompt them to fill it in via settings tab
         questionsRemaining.setText("Please Go To Settings And Enter Player Name");
         // pop the first element in randomized array from above and set to current index
-        currentQuestionIndex = (int) randomArray.get(0);
-        randomArray.remove(0);
+        var gettingTests = dbHandler.getQuestions();
+        totalQuizletQuestions = gettingTests.size();
+        Collections.shuffle(gettingTests);
+        questionsList = gettingTests;
+        //Toast.makeText(this, String.valueOf(gettingTests.get(0).getQuestion()), Toast.LENGTH_SHORT).show();
+
+        currentQuestion = questionsList.get(0);
+        questionsList.remove(0);
         remainingQuestions = totalQuizletQuestions;
 
         // set onClickListener to all answer buttons
@@ -141,16 +150,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         Button selectedButton = (Button) view;
         usersAnswer = selectedButton.getText().toString();
-        var getCorrectAnswer = QuizletActivity.answers[currentQuestionIndex];
-        if(getCorrectAnswer == usersAnswer){
+        var getCorrectAnswer = currentQuestion.getAnswer();
+        Log.d("UserAnswer", usersAnswer);
+        Log.d("SupposeCorrectAnswer", getCorrectAnswer);
+        if(Objects.equals(getCorrectAnswer, usersAnswer)){
             score++;
-                Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
         }
         else{
             Toast.makeText(this, "WRONG", Toast.LENGTH_SHORT).show();
         }
 
-        if(randomArray.size() == 0)
+        if(questionsList.size() == 0)
         {
             Intent newIntent = new Intent(getApplicationContext(), GameOverActivity.class);
             newIntent.putExtra("correctAnswers",score);
@@ -159,9 +170,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             newIntent.putExtra("userName", fetchPlayerName);
             startActivity(newIntent);
         }
-        currentQuestionIndex = (int) randomArray.get(0);
+        currentQuestion = questionsList.get(0);
+        questionsList.remove(0);
 
-        randomArray.remove(0);
         String getStringFromTextView = questionsRemaining.getText().toString();
         if(getStringFromTextView.contains("Welcome"))
         {
@@ -176,11 +187,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //
     void displayQuestion(){
-        questionView.setText(QuizletActivity.questions[currentQuestionIndex]);
-        answerA.setText(QuizletActivity.options[currentQuestionIndex][0]);
-        answerB.setText(QuizletActivity.options[currentQuestionIndex][1]);
-        answerC.setText(QuizletActivity.options[currentQuestionIndex][2]);
-        answerD.setText(QuizletActivity.options[currentQuestionIndex][3]);
+        questionView.setText(currentQuestion.getQuestion());
+        answerA.setText(currentQuestion.getOption1());
+        answerB.setText(currentQuestion.getOption2());
+        answerC.setText(currentQuestion.getOption3());
+        answerD.setText(currentQuestion.getOption4());
     }
 
     @Override

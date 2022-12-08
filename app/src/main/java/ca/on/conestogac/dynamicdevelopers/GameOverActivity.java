@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.text.DecimalFormat;
 
 public class GameOverActivity extends AppCompatActivity {
@@ -24,6 +25,7 @@ public class GameOverActivity extends AppCompatActivity {
     private ImageView imageViewGameResult;
     private Button buttonReset;
     private TextView textViewGameResult;
+    private DBHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,7 @@ public class GameOverActivity extends AppCompatActivity {
         setTheme(R.style.Theme_DynamicDevelopers);
 
         super.onCreate(savedInstanceState);
+        dbHandler = new DBHandler(GameOverActivity.this);
 
         // assign variables in the OnCreate
         setContentView(R.layout.activity_game_over);
@@ -60,6 +63,11 @@ public class GameOverActivity extends AppCompatActivity {
 
         // if player`s game results are greater than 50%
         imageViewGameResult = findViewById(R.id.show_game_result);
+        try {
+            dbHandler.AddUserScoreToDB(this, fetchPlayerName, calculateGamePercentage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         if(calculateGamePercentage > 50.0){
             imageViewGameResult.setImageResource(R.drawable.ic_launcher_winner_cup);
             textViewGameResult.setText("Congrats on the Win " + fetchPlayerName + " your score was " + String.valueOf(calculateGamePercentage) + "%");
@@ -68,6 +76,8 @@ public class GameOverActivity extends AppCompatActivity {
             imageViewGameResult.setImageResource(R.drawable.ic_launcher_losing_cup);
             textViewGameResult.setText("You lose "+ fetchPlayerName + " your score was " + String.valueOf(calculateGamePercentage) + "%");
         }
+
+
 
         // listener for event when reset button is clicked by player
         buttonReset.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), MainActivity.class)));
