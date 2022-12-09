@@ -1,0 +1,17 @@
+What provides essential information about an application for the Android OS?, Manifest, Resources, Gradle, Preferences, Manifest
+What provides the window in which the application draws its UI?, Activity, Intent, Preferences, Layout, Activity
+What method in the main activity`s onCreate is used to change back to the original theme?, getTheme, setTheme, setView, themeSet, setTheme
+What layouts align views horizontally or vertically and do not require extra work to correctly position?, Relative, Linear, Horizontal, Nested, Linear
+When working with layouts what would you use to take up the maximum space?, wrap_parent, match_parent, match_layout, wrap_content, match_parent
+What allows an application to run code in the background even if application is deactivated?, Service, Preferences, Intent, Activity, Service
+What method do you need to call to stop a timer from re-executing code at the next interval?, destroy(), hold(), stop(), cancel(), cancel()
+Which is not an SQLite data type, Integer, Real, Text, String, String
+Where do you create a new directory for a menu?, Layout, Res, Java, Mipmap, Res
+What is the name of the thread where broadcast receivers will work in android?, Worker, Main, Activity, None, Main
+How many callback methods are there in the Activity Lifecycle?, 6, 5, 4, 7, 7
+Which of the following helps us to handle click events on menu list items?, onClick(), onMenuClick(), onMenuItemClick(), onFocusChange(), onMenuItemClick()
+Which among the following attributes changes the color of the text present in a Text View?, textColor, Colour, fontColor, bodyColor, textColor
+Which among the following attributes changes the case of the text present in a TextView to uppercase?, changeCase, textCase, upperCase, None, textCase
+In Android NDK stands for..., Native design kit, New development kit, Native development kit, New design kit, Native development kit
+Among the following methods which one helps us in handling click events in Android?, onSelect(), onPress(), onClick(), onTouch(), onClick()
+Which of the following methods helps in identifying the element by its ID in Android?, findById(), findElementById(), findViewById(), findElementsBy(), findViewById()

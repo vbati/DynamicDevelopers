@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     // declared variables
     private SharedPreferences sharedPref;
-    private DBHandler dbHandler;
+    private QuizletDatabaseHandler quizletDatabaseHandler;
     TextView questionsRemaining;
     TextView questionView;
     Button answerA;
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        dbHandler = new DBHandler(MainActivity.this);
+        quizletDatabaseHandler = new QuizletDatabaseHandler(MainActivity.this);
         // Find all needed ids on main activity
         questionsRemaining = findViewById(R.id.questionsRemaining);
         questionView =findViewById(R.id.questionView);
@@ -69,14 +69,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // random questions so they are not always in same order
         try {
-            dbHandler.addFileOfChoosingToDb(this);
+            quizletDatabaseHandler.addFileOfChoosingToDb(this);
         } catch (IOException e) {
             e.printStackTrace();
         }
         // When game first starts Player Name is empty and prompt them to fill it in via settings tab
         questionsRemaining.setText("Please Go To Settings And Enter Player Name");
         // pop the first element in randomized array from above and set to current index
-        var gettingTests = dbHandler.getQuestions();
+        var gettingTests = quizletDatabaseHandler.getQuestions();
         totalQuizletQuestions = gettingTests.size();
         Collections.shuffle(gettingTests);
         questionsList = gettingTests;

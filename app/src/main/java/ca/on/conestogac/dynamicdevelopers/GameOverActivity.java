@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -25,7 +24,7 @@ public class GameOverActivity extends AppCompatActivity {
     private ImageView imageViewGameResult;
     private Button buttonReset;
     private TextView textViewGameResult;
-    private DBHandler dbHandler;
+    private QuizletDatabaseHandler quizletDatabaseHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +33,7 @@ public class GameOverActivity extends AppCompatActivity {
         setTheme(R.style.Theme_DynamicDevelopers);
 
         super.onCreate(savedInstanceState);
-        dbHandler = new DBHandler(GameOverActivity.this);
+        quizletDatabaseHandler = new QuizletDatabaseHandler(GameOverActivity.this);
 
         // assign variables in the OnCreate
         setContentView(R.layout.activity_game_over);
@@ -64,7 +63,7 @@ public class GameOverActivity extends AppCompatActivity {
         // if player`s game results are greater than 50%
         imageViewGameResult = findViewById(R.id.show_game_result);
         try {
-            dbHandler.AddUserScoreToDB(this, fetchPlayerName, calculateGamePercentage);
+            quizletDatabaseHandler.AddUserScoreToDB(this, fetchPlayerName, calculateGamePercentage);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -9,14 +9,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import java.io.*;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class DBHandler extends SQLiteOpenHelper {
+public class QuizletDatabaseHandler extends SQLiteOpenHelper {
 
     // creating a constant variables for our database.
     // below variable is for our database name.
@@ -53,7 +51,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     // below variable id for our course duration column.
     // creating a constructor for our database handler.
-    public DBHandler(Context context) {
+    public QuizletDatabaseHandler(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
         mDB = this.getWritableDatabase();
     }
@@ -102,7 +100,7 @@ public class DBHandler extends SQLiteOpenHelper {
             Log.d("DO I Make It", "DO I Make It");
             //if(file.exists()) {
 
-            final InputStream file = context.getAssets().open("Testing.txt");
+            final InputStream file = context.getAssets().open("QuizletDatabaseContent.txt");
             reader = new BufferedReader(new InputStreamReader(file));
             String line = reader.readLine();
 
