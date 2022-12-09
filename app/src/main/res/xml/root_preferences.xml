@@ -6,8 +6,13 @@
         <EditTextPreference
             android:id="@+id/player_name"
             app:key="player_name"
-            app:title="@string/signature_title"
+            app:title="@string/title_player_name"
             app:useSimpleSummaryProvider="true" />
+        <EditTextPreference
+            android:id="@+id/player_email"
+            android:key="player_email"
+            app:useSimpleSummaryProvider="true"
+            android:title="@string/title_email" />
 
     </PreferenceCategory>
 
