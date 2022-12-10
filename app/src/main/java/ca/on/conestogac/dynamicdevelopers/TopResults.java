@@ -2,8 +2,8 @@ package ca.on.conestogac.dynamicdevelopers;
 
 public class TopResults {
 
-    private String playerName;
-    private String score;
+    public String playerName;
+    public float score;
 
     public String getPlayerName() {
         return playerName;
@@ -13,15 +13,15 @@ public class TopResults {
         this.playerName = playerName;
     }
 
-    public String getScore() {
+    public float getScore() {
         return score;
     }
 
-    public void setScore(String score) {
+    public void setScore(float score) {
         this.score = score;
     }
 
-    public TopResults(String playerName, String score) {
+    public TopResults(String playerName, float score) {
         this.playerName = playerName;
         this.score = score;
 

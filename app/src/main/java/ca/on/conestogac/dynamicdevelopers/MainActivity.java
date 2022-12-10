@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     // declared variables
     private SharedPreferences sharedPref;
     private QuizletDatabaseHandler quizletDatabaseHandler;
+    String playerNameHolder = "";
     TextView questionsRemaining;
     TextView questionView;
     Button answerA;
@@ -174,13 +175,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         questionsList.remove(0);
 
         String getStringFromTextView = questionsRemaining.getText().toString();
+
         if(getStringFromTextView.contains("Welcome"))
         {
             remainingQuestions = remainingQuestions-1;
             Toast.makeText(this, String.valueOf(remainingQuestions), Toast.LENGTH_SHORT).show();
 
-            String fetchPlayerName = sharedPref.getString("player_name", "");
-            questionsRemaining.setText(fetchPlayerName + " you have " + String.valueOf(remainingQuestions) + " questions remaining");
+            playerNameHolder = sharedPref.getString("player_name", "");
+            questionsRemaining.setText(playerNameHolder + " you have " + String.valueOf(remainingQuestions) + " questions remaining");
+        }else{
+            remainingQuestions = remainingQuestions-1;
+            questionsRemaining.setText(playerNameHolder + " you have " + String.valueOf(remainingQuestions) + " questions remaining");
         }
         displayQuestion();
     }

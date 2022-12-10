@@ -211,7 +211,7 @@ public class QuizletDatabaseHandler extends SQLiteOpenHelper {
             do {
                 // on below line we are adding the data from cursor to our array list.
                 courseModalArrayList.add(new TopResults(cursorQuestions.getString(1),
-                        cursorQuestions.getString(2)));
+                        cursorQuestions.getFloat(2)));
             } while (cursorQuestions.moveToNext());
             // moving our cursor to next.
         }

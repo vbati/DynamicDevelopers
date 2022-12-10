@@ -65,7 +65,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/firstPlacePlayerName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -74,33 +74,7 @@
                     android:textAlignment="center" />
 
                 <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="TextView"
-                    android:padding="5dp"
-                    android:textAlignment="center" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textView10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="TextView"
-                    android:padding="5dp"
-                    android:textAlignment="center" />
-
-                <TextView
-                    android:id="@+id/textView9"
+                    android:id="@+id/firstPlaceScore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -117,7 +91,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView12"
+                    android:id="@+id/secondPlacePlayerName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -126,7 +100,33 @@
                     android:textAlignment="center" />
 
                 <TextView
-                    android:id="@+id/textView13"
+                    android:id="@+id/secondPlaceScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView"
+                    android:padding="5dp"
+                    android:textAlignment="center" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/thirdPlacePlayerName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView"
+                    android:padding="5dp"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/thirdPlaceScore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -142,7 +142,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView14"
+                    android:id="@+id/fourthPlacePlayerName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -151,7 +151,7 @@
                     android:textAlignment="center" />
 
                 <TextView
-                    android:id="@+id/textView15"
+                    android:id="@+id/fourthPlaceScore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -166,7 +166,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView16"
+                    android:id="@+id/fifthPlacePlayerName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -175,7 +175,7 @@
                     android:textAlignment="center" />
 
                 <TextView
-                    android:id="@+id/textView17"
+                    android:id="@+id/fifthPlaceScore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
